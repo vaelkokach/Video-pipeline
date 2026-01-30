@@ -1,0 +1,19 @@
+flowchart TD
+
+A[Video / Live Feed Input]
+
+A --> B1[Emotion Recognition <br> MMAction2 EmotiEffLib]
+A --> B2[Action Recognition <br> MMAction2]
+A --> B3[Frame Sampler]
+
+B3 --> C[Qwen3-VL Scene Description]
+
+B1 --> D[Metrics Aggregator]
+B2 --> D
+C --> D
+
+D --> E1[Vision-Language  Model]
+D --> E2[Assistant Bot]
+
+E1 --> F[Descion Making]
+E2 --> F
