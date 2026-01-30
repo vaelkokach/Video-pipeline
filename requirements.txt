@@ -1,0 +1,8 @@
+opencv-python>=4.8
+numpy>=1.24
+torch>=2.0
+torchvision>=0.15
+mmengine>=0.9
+mmcv>=2.0
+mmdet>=3.0
+# Install mmaction2 and emotiefflib per their docs
