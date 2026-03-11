@@ -2,35 +2,54 @@
 
 This project analyzes recorded or live classroom video for:
 - student count (before analysis starts)
-- action recognition via MMACTION2
+- action recognition via MMAction2
 - emotion recognition via EmotiEffLib
 - per-student tracking and a final report with summary statistics
 
 The pipeline is intentionally modular: you configure models and weights in
-`src/config.py`, and the adapters in `src/` wrap MMACTION2, EmotiEffLib, and
+`src/config.py`, and the adapters in `src/` wrap MMAction2, EmotiEffLib, and
 your chosen person detector.
 
 ## Quick start
 
-1) Create a virtual environment (recommended) and install dependencies.
-2) Install MMACTION2 and EmotiEffLib following their official instructions.
-3) Download model weights and update paths in `src/config.py`.
-4) Run the pipeline:
+1) Create a virtual environment and install dependencies:
 
-```bash
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1   # Windows PowerShell
+pip install -r requirements.txt
+```
+
+2) Download MMAction2 models (for action recognition):
+
+```powershell
+python scripts/download_models.py
+```
+
+3) Run the pipeline:
+
+```powershell
 python -m src.main --video path/to/classroom.mp4 --output-dir outputs
 ```
 
 For live feed:
 
-```bash
+```powershell
 python -m src.main --camera 0 --output-dir outputs
+```
+
+To limit live feed duration (seconds):
+
+```powershell
+python -m src.main --camera 0 --output-dir outputs --max-seconds 30
 ```
 
 ## Dependencies
 
-Base dependencies are in `requirements.txt`. You will still need to install
-MMACTION2 and EmotiEffLib from source or pip as instructed by their projects.
+Base dependencies are in `requirements.txt`:
+- **Person detection**: YOLOv8 (ultralytics) by default; config `det_config="yolo"`.
+- **Action recognition**: MMAction2 with TSN model; run `scripts/download_models.py` first.
+- **Emotion recognition**: EmotiEffLib; models auto-download on first use.
 
 ## Notes on models
 

@@ -11,11 +11,34 @@ import cv2
 
 from .config import PipelineConfig, default_config
 from .counting import StudentCounter
-from .inference_action import ActionRecognizer
-from .inference_emotion import EmotionRecognizer
 from .reporting import ReportStats, write_report
 from .tracking import SimpleTracker
 from .video_io import VideoSource, iter_sampled_frames, open_capture
+
+
+def _load_action_recognizer(config: PipelineConfig) -> Optional["ActionRecognizer"]:
+    try:
+        from .inference_action import ActionRecognizer
+        return ActionRecognizer(
+            config=str(config.model_paths.action_config),
+            checkpoint=str(config.model_paths.action_checkpoint),
+            device=config.device,
+        )
+    except Exception as e:
+        print(f"Warning: Action recognition disabled: {e}")
+        return None
+
+
+def _load_emotion_recognizer(config: PipelineConfig) -> Optional["EmotionRecognizer"]:
+    try:
+        from .inference_emotion import EmotionRecognizer
+        return EmotionRecognizer(
+            model_name=config.model_paths.emotion_model,
+            device=config.device,
+        )
+    except Exception as e:
+        print(f"Warning: Emotion recognition disabled: {e}")
+        return None
 
 
 def _count_students(
@@ -72,18 +95,11 @@ def run_pipeline(config: PipelineConfig, source: VideoSource, max_seconds: Optio
 
     counter = StudentCounter(
         det_config=str(config.model_paths.det_config),
-        det_checkpoint=str(config.model_paths.det_checkpoint),
+        det_checkpoint=config.model_paths.det_checkpoint,
         device=config.device,
     )
-    action_recognizer = ActionRecognizer(
-        config=str(config.model_paths.action_config),
-        checkpoint=str(config.model_paths.action_checkpoint),
-        device=config.device,
-    )
-    emotion_recognizer = EmotionRecognizer(
-        model_name=config.model_paths.emotion_model,
-        device=config.device,
-    )
+    action_recognizer = _load_action_recognizer(config)
+    emotion_recognizer = _load_emotion_recognizer(config)
 
     stats = ReportStats()
     stats.sample_fps = config.sample_fps
@@ -122,29 +138,31 @@ def run_pipeline(config: PipelineConfig, source: VideoSource, max_seconds: Optio
             stats.mark_student_seen(track_id)
 
             # Emotion recognition per student.
-            emotion_preds = emotion_recognizer.predict_frame(crop)
-            emotion_label, emotion_score = _top_prediction(
-                emotion_preds, min_score=config.min_emotion_score
-            )
-            if emotion_label:
-                stats.add_emotions([emotion_label])
-                stats.add_student_emotion(track_id, emotion_label)
-                stats.add_student_emotion_score(track_id, emotion_label, emotion_score)
+            if emotion_recognizer is not None:
+                emotion_preds = emotion_recognizer.predict_frame(crop)
+                emotion_label, emotion_score = _top_prediction(
+                    emotion_preds, min_score=config.min_emotion_score
+                )
+                if emotion_label:
+                    stats.add_emotions([emotion_label])
+                    stats.add_student_emotion(track_id, emotion_label)
+                    stats.add_student_emotion_score(track_id, emotion_label, emotion_score)
 
             # Action recognition per student on a rolling clip.
-            clip = per_student_clips.setdefault(track_id, [])
-            clip.append(crop)
-            if len(clip) >= config.clip_len:
-                clip_array = np.stack(clip[: config.clip_len], axis=0)
-                action_preds = action_recognizer.predict_clip(clip_array)
-                action_label, action_score = _top_prediction(
-                    action_preds, min_score=config.min_action_score
-                )
-                if action_label:
-                    stats.add_actions([action_label])
-                    stats.add_student_action(track_id, action_label)
-                    stats.add_student_action_score(track_id, action_label, action_score)
-                per_student_clips[track_id] = clip[config.clip_stride :]
+            if action_recognizer is not None:
+                clip = per_student_clips.setdefault(track_id, [])
+                clip.append(crop)
+                if len(clip) >= config.clip_len:
+                    clip_array = np.stack(clip[: config.clip_len], axis=0)
+                    action_preds = action_recognizer.predict_clip(clip_array)
+                    action_label, action_score = _top_prediction(
+                        action_preds, min_score=config.min_action_score
+                    )
+                    if action_label:
+                        stats.add_actions([action_label])
+                        stats.add_student_action(track_id, action_label)
+                        stats.add_student_action_score(track_id, action_label, action_score)
+                    per_student_clips[track_id] = clip[config.clip_stride :]
 
         if max_seconds is not None and (time.time() - start_time) >= max_seconds:
             break

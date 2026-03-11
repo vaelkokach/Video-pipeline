@@ -3,6 +3,10 @@ numpy>=1.24
 torch>=2.0
 torchvision>=0.15
 mmengine>=0.9
-mmcv>=2.0
+mmcv-lite>=2.0,<2.2
 mmdet>=3.0
-# Install mmaction2 and emotiefflib per their docs
+mmaction2>=1.0
+emotiefflib>=1.1
+ultralytics>=8.0
+# Person detection uses YOLOv8 (ultralytics) by default.
+# mmaction2/emotiefflib may have optional deps; action/emotion degrade gracefully if unavailable.

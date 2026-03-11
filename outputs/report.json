@@ -1,0 +1,10 @@
+{
+  "student_count": 0,
+  "total_frames": 10,
+  "sample_fps": 2,
+  "total_seconds": 5.0,
+  "action_counts": {},
+  "emotion_counts": {},
+  "per_student": {},
+  "per_student_metrics": {}
+}
