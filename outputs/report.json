@@ -1,10 +1,1429 @@
 {
-  "student_count": 0,
-  "total_frames": 10,
+  "student_count": 13,
+  "total_frames": 19,
   "sample_fps": 2,
-  "total_seconds": 5.0,
-  "action_counts": {},
-  "emotion_counts": {},
-  "per_student": {},
-  "per_student_metrics": {}
+  "total_seconds": 9.5,
+  "action_counts": {
+    "reading book": 10,
+    "testifying": 6,
+    "shaving head": 3,
+    "recording music": 2,
+    "crying": 2,
+    "sniffing": 2,
+    "headbutting": 2,
+    "air drumming": 2,
+    "using computer": 2,
+    "answering questions": 1,
+    "kissing": 1,
+    "getting a haircut": 1,
+    "headbanging": 1,
+    "playing piano": 1,
+    "trimming or shaving beard": 1
+  },
+  "emotion_counts": {
+    "Fear": 135,
+    "Happiness": 74,
+    "Neutral": 31,
+    "Surprise": 6,
+    "Disgust": 5,
+    "Anger": 5
+  },
+  "per_student": {
+    "1": {
+      "actions": {
+        "reading book": 2,
+        "using computer": 1
+      },
+      "emotions": {
+        "Neutral": 3,
+        "Fear": 12,
+        "Happiness": 2,
+        "Disgust": 1,
+        "Surprise": 1
+      }
+    },
+    "2": {
+      "actions": {
+        "answering questions": 1,
+        "reading book": 2
+      },
+      "emotions": {
+        "Happiness": 16,
+        "Fear": 3
+      }
+    },
+    "3": {
+      "actions": {
+        "shaving head": 3
+      },
+      "emotions": {
+        "Disgust": 1,
+        "Neutral": 1,
+        "Fear": 15,
+        "Surprise": 1,
+        "Happiness": 1
+      }
+    },
+    "4": {
+      "actions": {
+        "recording music": 2,
+        "using computer": 1
+      },
+      "emotions": {
+        "Happiness": 15,
+        "Disgust": 2,
+        "Neutral": 1
+      }
+    },
+    "5": {
+      "actions": {
+        "crying": 2,
+        "kissing": 1
+      },
+      "emotions": {
+        "Fear": 17,
+        "Happiness": 2
+      }
+    },
+    "6": {
+      "actions": {
+        "reading book": 3
+      },
+      "emotions": {
+        "Fear": 18,
+        "Happiness": 1
+      }
+    },
+    "7": {
+      "actions": {
+        "testifying": 3
+      },
+      "emotions": {
+        "Fear": 19
+      }
+    },
+    "8": {
+      "actions": {
+        "air drumming": 1,
+        "getting a haircut": 1,
+        "trimming or shaving beard": 1
+      },
+      "emotions": {
+        "Happiness": 11,
+        "Fear": 6
+      }
+    },
+    "9": {
+      "actions": {
+        "sniffing": 2,
+        "testifying": 1
+      },
+      "emotions": {
+        "Fear": 19
+      }
+    },
+    "10": {
+      "actions": {
+        "headbutting": 2,
+        "headbanging": 1
+      },
+      "emotions": {
+        "Neutral": 14,
+        "Anger": 5
+      }
+    },
+    "11": {
+      "actions": {
+        "reading book": 3
+      },
+      "emotions": {
+        "Fear": 19
+      }
+    },
+    "12": {
+      "actions": {},
+      "emotions": {
+        "Neutral": 3
+      }
+    },
+    "13": {
+      "actions": {
+        "testifying": 2,
+        "playing piano": 1
+      },
+      "emotions": {
+        "Surprise": 3,
+        "Happiness": 15
+      }
+    },
+    "14": {
+      "actions": {},
+      "emotions": {
+        "Disgust": 1
+      }
+    },
+    "15": {
+      "actions": {},
+      "emotions": {
+        "Happiness": 2
+      }
+    },
+    "16": {
+      "actions": {},
+      "emotions": {
+        "Happiness": 1
+      }
+    },
+    "17": {
+      "actions": {},
+      "emotions": {
+        "Fear": 2
+      }
+    },
+    "18": {
+      "actions": {},
+      "emotions": {
+        "Fear": 1
+      }
+    },
+    "19": {
+      "actions": {
+        "air drumming": 1
+      },
+      "emotions": {
+        "Happiness": 8
+      }
+    },
+    "20": {
+      "actions": {},
+      "emotions": {
+        "Neutral": 4,
+        "Fear": 2,
+        "Surprise": 1
+      }
+    },
+    "21": {
+      "actions": {},
+      "emotions": {
+        "Fear": 2,
+        "Neutral": 2
+      }
+    },
+    "22": {
+      "actions": {},
+      "emotions": {
+        "Neutral": 3
+      }
+    }
+  },
+  "per_student_metrics": {
+    "1": {
+      "dominant_action": "reading book",
+      "dominant_emotion": "Fear",
+      "bounding_box": {
+        "envelope": [
+          824.368896484375,
+          449.57110595703125,
+          955.0119018554688,
+          599.1319580078125
+        ],
+        "first": {
+          "frame_index": 0,
+          "bbox": [
+            834.716552734375,
+            456.9787902832031,
+            949.1509399414062,
+            594.3956909179688
+          ]
+        },
+        "last": {
+          "frame_index": 270,
+          "bbox": [
+            855.573974609375,
+            452.4886474609375,
+            955.0119018554688,
+            595.091552734375
+          ]
+        }
+      },
+      "action_diversity": 2,
+      "emotion_diversity": 5,
+      "action_entropy": 0.6365141662948128,
+      "emotion_entropy": 1.1285962886622183,
+      "action_rate_per_minute": {
+        "reading book": 12.631578947368421,
+        "using computer": 6.315789473684211
+      },
+      "emotion_rate_per_minute": {
+        "Neutral": 18.947368421052634,
+        "Fear": 75.78947368421053,
+        "Happiness": 12.631578947368421,
+        "Disgust": 6.315789473684211,
+        "Surprise": 6.315789473684211
+      },
+      "action_top_ratio": 0.6666666666666666,
+      "emotion_top_ratio": 0.631578947368421,
+      "action_change_rate_per_min": 6.315789473684211,
+      "emotion_change_rate_per_min": 50.526315789473685,
+      "coverage_seconds": 9.5,
+      "detection_rate": 1.0,
+      "avg_action_confidence": 0.905613899230957,
+      "avg_emotion_confidence": 0.17851577385475761,
+      "avg_action_confidence_per_label": {
+        "reading book": 0.9479379057884216,
+        "using computer": 0.8209658861160278
+      },
+      "avg_emotion_confidence_per_label": {
+        "Neutral": 0.16987699270248413,
+        "Fear": 0.18060222019751868,
+        "Happiness": 0.18768266588449478,
+        "Disgust": 0.16742318868637085,
+        "Surprise": 0.1721535623073578
+      }
+    },
+    "2": {
+      "dominant_action": "reading book",
+      "dominant_emotion": "Happiness",
+      "bounding_box": {
+        "envelope": [
+          1065.436767578125,
+          435.5820617675781,
+          1140.5794677734375,
+          552.2554321289062
+        ],
+        "first": {
+          "frame_index": 0,
+          "bbox": [
+            1066.1707763671875,
+            438.1094055175781,
+            1134.5399169921875,
+            551.919189453125
+          ]
+        },
+        "last": {
+          "frame_index": 270,
+          "bbox": [
+            1067.8326416015625,
+            436.1443786621094,
+            1136.3798828125,
+            552.2554321289062
+          ]
+        }
+      },
+      "action_diversity": 2,
+      "emotion_diversity": 2,
+      "action_entropy": 0.6365141662948128,
+      "emotion_entropy": 0.4361623233853443,
+      "action_rate_per_minute": {
+        "answering questions": 6.315789473684211,
+        "reading book": 12.631578947368421
+      },
+      "emotion_rate_per_minute": {
+        "Happiness": 101.05263157894737,
+        "Fear": 18.947368421052634
+      },
+      "action_top_ratio": 0.6666666666666666,
+      "emotion_top_ratio": 0.8421052631578947,
+      "action_change_rate_per_min": 6.315789473684211,
+      "emotion_change_rate_per_min": 12.631578947368421,
+      "coverage_seconds": 9.5,
+      "detection_rate": 1.0,
+      "avg_action_confidence": 0.47121500472227734,
+      "avg_emotion_confidence": 0.24065431874049337,
+      "avg_action_confidence_per_label": {
+        "answering questions": 0.2108904868364334,
+        "reading book": 0.6013772636651993
+      },
+      "avg_emotion_confidence_per_label": {
+        "Happiness": 0.24243937898427248,
+        "Fear": 0.23113399744033813
+      }
+    },
+    "3": {
+      "dominant_action": "shaving head",
+      "dominant_emotion": "Fear",
+      "bounding_box": {
+        "envelope": [
+          420.5894470214844,
+          483.46307373046875,
+          532.690673828125,
+          738.7658081054688
+        ],
+        "first": {
+          "frame_index": 0,
+          "bbox": [
+            420.5894470214844,
+            483.46307373046875,
+            531.787353515625,
+            738.7658081054688
+          ]
+        },
+        "last": {
+          "frame_index": 270,
+          "bbox": [
+            425.5428771972656,
+            483.7886047363281,
+            529.3257446289062,
+            703.932861328125
+          ]
+        }
+      },
+      "action_diversity": 1,
+      "emotion_diversity": 5,
+      "action_entropy": -1.000000082240371e-09,
+      "emotion_entropy": 0.806504604875222,
+      "action_rate_per_minute": {
+        "shaving head": 18.947368421052634
+      },
+      "emotion_rate_per_minute": {
+        "Disgust": 6.315789473684211,
+        "Neutral": 6.315789473684211,
+        "Fear": 94.73684210526316,
+        "Surprise": 6.315789473684211,
+        "Happiness": 6.315789473684211
+      },
+      "action_top_ratio": 1.0,
+      "emotion_top_ratio": 0.7894736842105263,
+      "action_change_rate_per_min": 0.0,
+      "emotion_change_rate_per_min": 37.89473684210527,
+      "coverage_seconds": 9.5,
+      "detection_rate": 1.0,
+      "avg_action_confidence": 0.17545660585165024,
+      "avg_emotion_confidence": 0.17278613385401273,
+      "avg_action_confidence_per_label": {
+        "shaving head": 0.17545660585165024
+      },
+      "avg_emotion_confidence_per_label": {
+        "Disgust": 0.155507430434227,
+        "Neutral": 0.15575672686100006,
+        "Fear": 0.17513401408990223,
+        "Surprise": 0.16147947311401367,
+        "Happiness": 0.1831827014684677
+      }
+    },
+    "4": {
+      "dominant_action": "recording music",
+      "dominant_emotion": "Happiness",
+      "bounding_box": {
+        "envelope": [
+          925.229248046875,
+          451.0975341796875,
+          1011.9321899414062,
+          575.4011840820312
+        ],
+        "first": {
+          "frame_index": 0,
+          "bbox": [
+            930.3397216796875,
+            453.14324951171875,
+            998.0338745117188,
+            550.4679565429688
+          ]
+        },
+        "last": {
+          "frame_index": 255,
+          "bbox": [
+            928.5018920898438,
+            455.84832763671875,
+            993.1055297851562,
+            574.5147094726562
+          ]
+        }
+      },
+      "action_diversity": 2,
+      "emotion_diversity": 3,
+      "action_entropy": 0.6365141662948128,
+      "emotion_entropy": 0.5566469005821069,
+      "action_rate_per_minute": {
+        "recording music": 12.631578947368421,
+        "using computer": 6.315789473684211
+      },
+      "emotion_rate_per_minute": {
+        "Happiness": 94.73684210526316,
+        "Disgust": 12.631578947368421,
+        "Neutral": 6.315789473684211
+      },
+      "action_top_ratio": 0.6666666666666666,
+      "emotion_top_ratio": 0.8333333333333334,
+      "action_change_rate_per_min": 12.631578947368421,
+      "emotion_change_rate_per_min": 31.578947368421055,
+      "coverage_seconds": 9.0,
+      "detection_rate": 0.9473684210526315,
+      "avg_action_confidence": 0.4333854913711548,
+      "avg_emotion_confidence": 0.2002300802204344,
+      "avg_action_confidence_per_label": {
+        "recording music": 0.39592111110687256,
+        "using computer": 0.5083142518997192
+      },
+      "avg_emotion_confidence_per_label": {
+        "Happiness": 0.20471258958180746,
+        "Disgust": 0.18278400599956512,
+        "Neutral": 0.16788458824157715
+      }
+    },
+    "5": {
+      "dominant_action": "crying",
+      "dominant_emotion": "Fear",
+      "bounding_box": {
+        "envelope": [
+          492.2593994140625,
+          433.9350891113281,
+          550.75439453125,
+          570.2822265625
+        ],
+        "first": {
+          "frame_index": 0,
+          "bbox": [
+            492.9204406738281,
+            435.0006408691406,
+            545.290771484375,
+            570.2731323242188
+          ]
+        },
+        "last": {
+          "frame_index": 270,
+          "bbox": [
+            493.555419921875,
+            434.34771728515625,
+            548.2520751953125,
+            568.013671875
+          ]
+        }
+      },
+      "action_diversity": 2,
+      "emotion_diversity": 2,
+      "action_entropy": 0.6365141662948128,
+      "emotion_entropy": 0.3364957555835161,
+      "action_rate_per_minute": {
+        "crying": 12.631578947368421,
+        "kissing": 6.315789473684211
+      },
+      "emotion_rate_per_minute": {
+        "Fear": 107.36842105263159,
+        "Happiness": 12.631578947368421
+      },
+      "action_top_ratio": 0.6666666666666666,
+      "emotion_top_ratio": 0.8947368421052632,
+      "action_change_rate_per_min": 12.631578947368421,
+      "emotion_change_rate_per_min": 25.263157894736842,
+      "coverage_seconds": 9.5,
+      "detection_rate": 1.0,
+      "avg_action_confidence": 0.30978575845559436,
+      "avg_emotion_confidence": 0.18735614732692116,
+      "avg_action_confidence_per_label": {
+        "crying": 0.2622660771012306,
+        "kissing": 0.4048251211643219
+      },
+      "avg_emotion_confidence_per_label": {
+        "Fear": 0.18523897756548488,
+        "Happiness": 0.20535209029912949
+      }
+    },
+    "6": {
+      "dominant_action": "reading book",
+      "dominant_emotion": "Fear",
+      "bounding_box": {
+        "envelope": [
+          195.16233825683594,
+          569.8222045898438,
+          288.8141784667969,
+          757.0490112304688
+        ],
+        "first": {
+          "frame_index": 0,
+          "bbox": [
+            196.1978759765625,
+            570.2662963867188,
+            287.0179138183594,
+            756.0045776367188
+          ]
+        },
+        "last": {
+          "frame_index": 270,
+          "bbox": [
+            196.42864990234375,
+            570.3541259765625,
+            286.939208984375,
+            755.71337890625
+          ]
+        }
+      },
+      "action_diversity": 1,
+      "emotion_diversity": 2,
+      "action_entropy": -1.000000082240371e-09,
+      "emotion_entropy": 0.2061920486332319,
+      "action_rate_per_minute": {
+        "reading book": 18.947368421052634
+      },
+      "emotion_rate_per_minute": {
+        "Fear": 113.6842105263158,
+        "Happiness": 6.315789473684211
+      },
+      "action_top_ratio": 1.0,
+      "emotion_top_ratio": 0.9473684210526315,
+      "action_change_rate_per_min": 0.0,
+      "emotion_change_rate_per_min": 12.631578947368421,
+      "coverage_seconds": 9.5,
+      "detection_rate": 1.0,
+      "avg_action_confidence": 0.9666809240976969,
+      "avg_emotion_confidence": 0.17135915238606303,
+      "avg_action_confidence_per_label": {
+        "reading book": 0.9666809240976969
+      },
+      "avg_emotion_confidence_per_label": {
+        "Fear": 0.1713869728975826,
+        "Happiness": 0.17085838317871094
+      }
+    },
+    "7": {
+      "dominant_action": "testifying",
+      "dominant_emotion": "Fear",
+      "bounding_box": {
+        "envelope": [
+          627.3419799804688,
+          353.1905212402344,
+          672.8720092773438,
+          431.3592529296875
+        ],
+        "first": {
+          "frame_index": 0,
+          "bbox": [
+            627.3419799804688,
+            353.4183349609375,
+            672.4937744140625,
+            430.50628662109375
+          ]
+        },
+        "last": {
+          "frame_index": 270,
+          "bbox": [
+            629.372802734375,
+            354.0573425292969,
+            672.501708984375,
+            429.76043701171875
+          ]
+        }
+      },
+      "action_diversity": 1,
+      "emotion_diversity": 1,
+      "action_entropy": -1.000000082240371e-09,
+      "emotion_entropy": -1.000000082240371e-09,
+      "action_rate_per_minute": {
+        "testifying": 18.947368421052634
+      },
+      "emotion_rate_per_minute": {
+        "Fear": 120.0
+      },
+      "action_top_ratio": 1.0,
+      "emotion_top_ratio": 1.0,
+      "action_change_rate_per_min": 0.0,
+      "emotion_change_rate_per_min": 0.0,
+      "coverage_seconds": 9.5,
+      "detection_rate": 1.0,
+      "avg_action_confidence": 0.5295008520285288,
+      "avg_emotion_confidence": 0.2619959210094653,
+      "avg_action_confidence_per_label": {
+        "testifying": 0.5295008520285288
+      },
+      "avg_emotion_confidence_per_label": {
+        "Fear": 0.2619959210094653
+      }
+    },
+    "8": {
+      "dominant_action": "air drumming",
+      "dominant_emotion": "Happiness",
+      "bounding_box": {
+        "envelope": [
+          1241.819580078125,
+          495.4461364746094,
+          1426.9425048828125,
+          668.3724365234375
+        ],
+        "first": {
+          "frame_index": 0,
+          "bbox": [
+            1242.8876953125,
+            495.74755859375,
+            1366.4390869140625,
+            665.9219360351562
+          ]
+        },
+        "last": {
+          "frame_index": 270,
+          "bbox": [
+            1244.0330810546875,
+            498.9100646972656,
+            1422.7100830078125,
+            660.326171875
+          ]
+        }
+      },
+      "action_diversity": 3,
+      "emotion_diversity": 2,
+      "action_entropy": 1.0986122856681098,
+      "emotion_entropy": 0.6492483528708981,
+      "action_rate_per_minute": {
+        "air drumming": 6.315789473684211,
+        "getting a haircut": 6.315789473684211,
+        "trimming or shaving beard": 6.315789473684211
+      },
+      "emotion_rate_per_minute": {
+        "Happiness": 69.47368421052632,
+        "Fear": 37.89473684210527
+      },
+      "action_top_ratio": 0.3333333333333333,
+      "emotion_top_ratio": 0.6470588235294118,
+      "action_change_rate_per_min": 12.631578947368421,
+      "emotion_change_rate_per_min": 18.947368421052634,
+      "coverage_seconds": 8.5,
+      "detection_rate": 0.8947368421052632,
+      "avg_action_confidence": 0.1932443231344223,
+      "avg_emotion_confidence": 0.22919709454564488,
+      "avg_action_confidence_per_label": {
+        "air drumming": 0.15530580282211304,
+        "getting a haircut": 0.24130448698997498,
+        "trimming or shaving beard": 0.1831226795911789
+      },
+      "avg_emotion_confidence_per_label": {
+        "Happiness": 0.24732076986269516,
+        "Fear": 0.195970356464386
+      }
+    },
+    "9": {
+      "dominant_action": "sniffing",
+      "dominant_emotion": "Fear",
+      "bounding_box": {
+        "envelope": [
+          783.41552734375,
+          403.16912841796875,
+          870.3888549804688,
+          516.63916015625
+        ],
+        "first": {
+          "frame_index": 0,
+          "bbox": [
+            811.5260620117188,
+            403.4266662597656,
+            870.1886596679688,
+            505.04986572265625
+          ]
+        },
+        "last": {
+          "frame_index": 270,
+          "bbox": [
+            810.814697265625,
+            403.6479797363281,
+            869.815673828125,
+            515.6754150390625
+          ]
+        }
+      },
+      "action_diversity": 2,
+      "emotion_diversity": 1,
+      "action_entropy": 0.6365141662948128,
+      "emotion_entropy": -1.000000082240371e-09,
+      "action_rate_per_minute": {
+        "sniffing": 12.631578947368421,
+        "testifying": 6.315789473684211
+      },
+      "emotion_rate_per_minute": {
+        "Fear": 120.0
+      },
+      "action_top_ratio": 0.6666666666666666,
+      "emotion_top_ratio": 1.0,
+      "action_change_rate_per_min": 12.631578947368421,
+      "emotion_change_rate_per_min": 0.0,
+      "coverage_seconds": 9.5,
+      "detection_rate": 1.0,
+      "avg_action_confidence": 0.16594138741493225,
+      "avg_emotion_confidence": 0.3260216093377063,
+      "avg_action_confidence_per_label": {
+        "sniffing": 0.1193307489156723,
+        "testifying": 0.25916266441345215
+      },
+      "avg_emotion_confidence_per_label": {
+        "Fear": 0.3260216093377063
+      }
+    },
+    "10": {
+      "dominant_action": "headbutting",
+      "dominant_emotion": "Neutral",
+      "bounding_box": {
+        "envelope": [
+          524.3441772460938,
+          338.8140869140625,
+          552.0919189453125,
+          374.0815124511719
+        ],
+        "first": {
+          "frame_index": 0,
+          "bbox": [
+            524.3441772460938,
+            338.8140869140625,
+            548.8106689453125,
+            374.0459899902344
+          ]
+        },
+        "last": {
+          "frame_index": 270,
+          "bbox": [
+            527.4310302734375,
+            339.88031005859375,
+            550.4915771484375,
+            372.72802734375
+          ]
+        }
+      },
+      "action_diversity": 2,
+      "emotion_diversity": 2,
+      "action_entropy": 0.6365141662948128,
+      "emotion_entropy": 0.5763341257567498,
+      "action_rate_per_minute": {
+        "headbutting": 12.631578947368421,
+        "headbanging": 6.315789473684211
+      },
+      "emotion_rate_per_minute": {
+        "Neutral": 88.42105263157895,
+        "Anger": 31.578947368421055
+      },
+      "action_top_ratio": 0.6666666666666666,
+      "emotion_top_ratio": 0.7368421052631579,
+      "action_change_rate_per_min": 6.315789473684211,
+      "emotion_change_rate_per_min": 37.89473684210527,
+      "coverage_seconds": 9.5,
+      "detection_rate": 1.0,
+      "avg_action_confidence": 0.4165881772836049,
+      "avg_emotion_confidence": 0.2781869518129449,
+      "avg_action_confidence_per_label": {
+        "headbutting": 0.4593428373336792,
+        "headbanging": 0.3310788571834564
+      },
+      "avg_emotion_confidence_per_label": {
+        "Neutral": 0.24763222464493342,
+        "Anger": 0.3637401878833771
+      }
+    },
+    "11": {
+      "dominant_action": "reading book",
+      "dominant_emotion": "Fear",
+      "bounding_box": {
+        "envelope": [
+          1390.91650390625,
+          456.05072021484375,
+          1510.695068359375,
+          662.5674438476562
+        ],
+        "first": {
+          "frame_index": 0,
+          "bbox": [
+            1391.1185302734375,
+            456.1987609863281,
+            1510.695068359375,
+            655.1046142578125
+          ]
+        },
+        "last": {
+          "frame_index": 270,
+          "bbox": [
+            1391.0228271484375,
+            456.9718322753906,
+            1508.4952392578125,
+            658.4551391601562
+          ]
+        }
+      },
+      "action_diversity": 1,
+      "emotion_diversity": 1,
+      "action_entropy": -1.000000082240371e-09,
+      "emotion_entropy": -1.000000082240371e-09,
+      "action_rate_per_minute": {
+        "reading book": 18.947368421052634
+      },
+      "emotion_rate_per_minute": {
+        "Fear": 120.0
+      },
+      "action_top_ratio": 1.0,
+      "emotion_top_ratio": 1.0,
+      "action_change_rate_per_min": 0.0,
+      "emotion_change_rate_per_min": 0.0,
+      "coverage_seconds": 9.5,
+      "detection_rate": 1.0,
+      "avg_action_confidence": 0.6409487724304199,
+      "avg_emotion_confidence": 0.21816485884942508,
+      "avg_action_confidence_per_label": {
+        "reading book": 0.6409487724304199
+      },
+      "avg_emotion_confidence_per_label": {
+        "Fear": 0.21816485884942508
+      }
+    },
+    "12": {
+      "dominant_action": null,
+      "dominant_emotion": "Neutral",
+      "bounding_box": {
+        "envelope": [
+          534.7452392578125,
+          374.3703918457031,
+          582.0943603515625,
+          460.08148193359375
+        ],
+        "first": {
+          "frame_index": 0,
+          "bbox": [
+            535.06591796875,
+            374.4916687011719,
+            581.9260864257812,
+            460.08148193359375
+          ]
+        },
+        "last": {
+          "frame_index": 30,
+          "bbox": [
+            534.9163208007812,
+            374.3703918457031,
+            582.0943603515625,
+            460.08074951171875
+          ]
+        }
+      },
+      "action_diversity": 0,
+      "emotion_diversity": 1,
+      "action_entropy": 0.0,
+      "emotion_entropy": -1.000000082240371e-09,
+      "action_rate_per_minute": {},
+      "emotion_rate_per_minute": {
+        "Neutral": 18.947368421052634
+      },
+      "action_top_ratio": 0.0,
+      "emotion_top_ratio": 1.0,
+      "action_change_rate_per_min": 0.0,
+      "emotion_change_rate_per_min": 0.0,
+      "coverage_seconds": 1.5,
+      "detection_rate": 0.15789473684210525,
+      "avg_action_confidence": 0.0,
+      "avg_emotion_confidence": 0.17754815518856049,
+      "avg_action_confidence_per_label": {},
+      "avg_emotion_confidence_per_label": {
+        "Neutral": 0.17754815518856049
+      }
+    },
+    "13": {
+      "dominant_action": "testifying",
+      "dominant_emotion": "Happiness",
+      "bounding_box": {
+        "envelope": [
+          651.72119140625,
+          473.7196960449219,
+          783.234619140625,
+          626.8606567382812
+        ],
+        "first": {
+          "frame_index": 15,
+          "bbox": [
+            702.7709350585938,
+            476.789794921875,
+            783.234619140625,
+            584.9277954101562
+          ]
+        },
+        "last": {
+          "frame_index": 270,
+          "bbox": [
+            652.598388671875,
+            481.7618103027344,
+            742.8759765625,
+            612.2503662109375
+          ]
+        }
+      },
+      "action_diversity": 2,
+      "emotion_diversity": 2,
+      "action_entropy": 0.6365141662948128,
+      "emotion_entropy": 0.4505612068663047,
+      "action_rate_per_minute": {
+        "testifying": 12.631578947368421,
+        "playing piano": 6.315789473684211
+      },
+      "emotion_rate_per_minute": {
+        "Surprise": 18.947368421052634,
+        "Happiness": 94.73684210526316
+      },
+      "action_top_ratio": 0.6666666666666666,
+      "emotion_top_ratio": 0.8333333333333334,
+      "action_change_rate_per_min": 6.315789473684211,
+      "emotion_change_rate_per_min": 6.315789473684211,
+      "coverage_seconds": 9.0,
+      "detection_rate": 0.9473684210526315,
+      "avg_action_confidence": 0.32869939009348553,
+      "avg_emotion_confidence": 0.21425580233335495,
+      "avg_action_confidence_per_label": {
+        "testifying": 0.33223021030426025,
+        "playing piano": 0.32163774967193604
+      },
+      "avg_emotion_confidence_per_label": {
+        "Surprise": 0.17039958635965982,
+        "Happiness": 0.22302704552809396
+      }
+    },
+    "14": {
+      "dominant_action": null,
+      "dominant_emotion": "Disgust",
+      "bounding_box": {
+        "envelope": [
+          701.9923095703125,
+          475.85614013671875,
+          783.1886596679688,
+          544.6073608398438
+        ],
+        "first": {
+          "frame_index": 45,
+          "bbox": [
+            701.9923095703125,
+            475.85614013671875,
+            783.1886596679688,
+            544.6073608398438
+          ]
+        },
+        "last": {
+          "frame_index": 45,
+          "bbox": [
+            701.9923095703125,
+            475.85614013671875,
+            783.1886596679688,
+            544.6073608398438
+          ]
+        }
+      },
+      "action_diversity": 0,
+      "emotion_diversity": 1,
+      "action_entropy": 0.0,
+      "emotion_entropy": -1.000000082240371e-09,
+      "action_rate_per_minute": {},
+      "emotion_rate_per_minute": {
+        "Disgust": 6.315789473684211
+      },
+      "action_top_ratio": 0.0,
+      "emotion_top_ratio": 1.0,
+      "action_change_rate_per_min": 0.0,
+      "emotion_change_rate_per_min": 0.0,
+      "coverage_seconds": 0.5,
+      "detection_rate": 0.05263157894736842,
+      "avg_action_confidence": 0.0,
+      "avg_emotion_confidence": 0.1698455661535263,
+      "avg_action_confidence_per_label": {},
+      "avg_emotion_confidence_per_label": {
+        "Disgust": 0.1698455661535263
+      }
+    },
+    "15": {
+      "dominant_action": null,
+      "dominant_emotion": "Happiness",
+      "bounding_box": {
+        "envelope": [
+          1243.40478515625,
+          496.8119812011719,
+          1420.8095703125,
+          662.5499267578125
+        ],
+        "first": {
+          "frame_index": 60,
+          "bbox": [
+            1243.669921875,
+            496.8119812011719,
+            1420.8095703125,
+            662.5499267578125
+          ]
+        },
+        "last": {
+          "frame_index": 75,
+          "bbox": [
+            1243.40478515625,
+            499.2111511230469,
+            1411.9903564453125,
+            661.5580444335938
+          ]
+        }
+      },
+      "action_diversity": 0,
+      "emotion_diversity": 1,
+      "action_entropy": 0.0,
+      "emotion_entropy": -1.000000082240371e-09,
+      "action_rate_per_minute": {},
+      "emotion_rate_per_minute": {
+        "Happiness": 12.631578947368421
+      },
+      "action_top_ratio": 0.0,
+      "emotion_top_ratio": 1.0,
+      "action_change_rate_per_min": 0.0,
+      "emotion_change_rate_per_min": 0.0,
+      "coverage_seconds": 1.0,
+      "detection_rate": 0.10526315789473684,
+      "avg_action_confidence": 0.0,
+      "avg_emotion_confidence": 0.21433093398809433,
+      "avg_action_confidence_per_label": {},
+      "avg_emotion_confidence_per_label": {
+        "Happiness": 0.21433093398809433
+      }
+    },
+    "16": {
+      "dominant_action": null,
+      "dominant_emotion": "Happiness",
+      "bounding_box": {
+        "envelope": [
+          406.494140625,
+          343.0220947265625,
+          436.15850830078125,
+          370.33721923828125
+        ],
+        "first": {
+          "frame_index": 60,
+          "bbox": [
+            406.494140625,
+            343.0220947265625,
+            436.15850830078125,
+            370.33721923828125
+          ]
+        },
+        "last": {
+          "frame_index": 60,
+          "bbox": [
+            406.494140625,
+            343.0220947265625,
+            436.15850830078125,
+            370.33721923828125
+          ]
+        }
+      },
+      "action_diversity": 0,
+      "emotion_diversity": 1,
+      "action_entropy": 0.0,
+      "emotion_entropy": -1.000000082240371e-09,
+      "action_rate_per_minute": {},
+      "emotion_rate_per_minute": {
+        "Happiness": 6.315789473684211
+      },
+      "action_top_ratio": 0.0,
+      "emotion_top_ratio": 1.0,
+      "action_change_rate_per_min": 0.0,
+      "emotion_change_rate_per_min": 0.0,
+      "coverage_seconds": 0.5,
+      "detection_rate": 0.05263157894736842,
+      "avg_action_confidence": 0.0,
+      "avg_emotion_confidence": 0.20088224112987518,
+      "avg_action_confidence_per_label": {},
+      "avg_emotion_confidence_per_label": {
+        "Happiness": 0.20088224112987518
+      }
+    },
+    "17": {
+      "dominant_action": null,
+      "dominant_emotion": "Fear",
+      "bounding_box": {
+        "envelope": [
+          775.6444091796875,
+          402.7890319824219,
+          867.1524658203125,
+          517.7361450195312
+        ],
+        "first": {
+          "frame_index": 120,
+          "bbox": [
+            775.6444091796875,
+            404.1691589355469,
+            867.1222534179688,
+            517.7361450195312
+          ]
+        },
+        "last": {
+          "frame_index": 135,
+          "bbox": [
+            785.3866577148438,
+            402.7890319824219,
+            867.1524658203125,
+            515.5197143554688
+          ]
+        }
+      },
+      "action_diversity": 0,
+      "emotion_diversity": 1,
+      "action_entropy": 0.0,
+      "emotion_entropy": -1.000000082240371e-09,
+      "action_rate_per_minute": {},
+      "emotion_rate_per_minute": {
+        "Fear": 12.631578947368421
+      },
+      "action_top_ratio": 0.0,
+      "emotion_top_ratio": 1.0,
+      "action_change_rate_per_min": 0.0,
+      "emotion_change_rate_per_min": 0.0,
+      "coverage_seconds": 1.0,
+      "detection_rate": 0.10526315789473684,
+      "avg_action_confidence": 0.0,
+      "avg_emotion_confidence": 0.24635456502437592,
+      "avg_action_confidence_per_label": {},
+      "avg_emotion_confidence_per_label": {
+        "Fear": 0.24635456502437592
+      }
+    },
+    "18": {
+      "dominant_action": null,
+      "dominant_emotion": "Fear",
+      "bounding_box": {
+        "envelope": [
+          654.1752319335938,
+          480.4909362792969,
+          731.1812133789062,
+          555.463623046875
+        ],
+        "first": {
+          "frame_index": 120,
+          "bbox": [
+            654.1752319335938,
+            480.4909362792969,
+            731.1812133789062,
+            555.463623046875
+          ]
+        },
+        "last": {
+          "frame_index": 120,
+          "bbox": [
+            654.1752319335938,
+            480.4909362792969,
+            731.1812133789062,
+            555.463623046875
+          ]
+        }
+      },
+      "action_diversity": 0,
+      "emotion_diversity": 1,
+      "action_entropy": 0.0,
+      "emotion_entropy": -1.000000082240371e-09,
+      "action_rate_per_minute": {},
+      "emotion_rate_per_minute": {
+        "Fear": 6.315789473684211
+      },
+      "action_top_ratio": 0.0,
+      "emotion_top_ratio": 1.0,
+      "action_change_rate_per_min": 0.0,
+      "emotion_change_rate_per_min": 0.0,
+      "coverage_seconds": 0.5,
+      "detection_rate": 0.05263157894736842,
+      "avg_action_confidence": 0.0,
+      "avg_emotion_confidence": 0.1966787725687027,
+      "avg_action_confidence_per_label": {},
+      "avg_emotion_confidence_per_label": {
+        "Fear": 0.1966787725687027
+      }
+    },
+    "19": {
+      "dominant_action": "air drumming",
+      "dominant_emotion": "Happiness",
+      "bounding_box": {
+        "envelope": [
+          1242.87890625,
+          496.6669006347656,
+          1367.173828125,
+          662.9942016601562
+        ],
+        "first": {
+          "frame_index": 150,
+          "bbox": [
+            1243.1512451171875,
+            496.6669006347656,
+            1365.6002197265625,
+            662.9942016601562
+          ]
+        },
+        "last": {
+          "frame_index": 270,
+          "bbox": [
+            1244.19580078125,
+            498.8199768066406,
+            1363.490966796875,
+            660.093505859375
+          ]
+        }
+      },
+      "action_diversity": 1,
+      "emotion_diversity": 1,
+      "action_entropy": -1.000000082240371e-09,
+      "emotion_entropy": -1.000000082240371e-09,
+      "action_rate_per_minute": {
+        "air drumming": 6.315789473684211
+      },
+      "emotion_rate_per_minute": {
+        "Happiness": 50.526315789473685
+      },
+      "action_top_ratio": 1.0,
+      "emotion_top_ratio": 1.0,
+      "action_change_rate_per_min": 0.0,
+      "emotion_change_rate_per_min": 0.0,
+      "coverage_seconds": 4.0,
+      "detection_rate": 0.42105263157894735,
+      "avg_action_confidence": 0.39735543727874756,
+      "avg_emotion_confidence": 0.22426892444491386,
+      "avg_action_confidence_per_label": {
+        "air drumming": 0.39735543727874756
+      },
+      "avg_emotion_confidence_per_label": {
+        "Happiness": 0.22426892444491386
+      }
+    },
+    "20": {
+      "dominant_action": null,
+      "dominant_emotion": "Neutral",
+      "bounding_box": {
+        "envelope": [
+          948.7653198242188,
+          451.52581787109375,
+          1008.9104614257812,
+          504.161865234375
+        ],
+        "first": {
+          "frame_index": 165,
+          "bbox": [
+            955.8761596679688,
+            451.52581787109375,
+            1008.9104614257812,
+            501.7774353027344
+          ]
+        },
+        "last": {
+          "frame_index": 270,
+          "bbox": [
+            949.1162719726562,
+            455.4035339355469,
+            992.3172607421875,
+            503.6908264160156
+          ]
+        }
+      },
+      "action_diversity": 0,
+      "emotion_diversity": 3,
+      "action_entropy": 0.0,
+      "emotion_entropy": 0.9556998881125345,
+      "action_rate_per_minute": {},
+      "emotion_rate_per_minute": {
+        "Neutral": 25.263157894736842,
+        "Fear": 12.631578947368421,
+        "Surprise": 6.315789473684211
+      },
+      "action_top_ratio": 0.0,
+      "emotion_top_ratio": 0.5714285714285714,
+      "action_change_rate_per_min": 0.0,
+      "emotion_change_rate_per_min": 12.631578947368421,
+      "coverage_seconds": 3.5,
+      "detection_rate": 0.3684210526315789,
+      "avg_action_confidence": 0.0,
+      "avg_emotion_confidence": 0.2552726311343057,
+      "avg_action_confidence_per_label": {},
+      "avg_emotion_confidence_per_label": {
+        "Neutral": 0.3024573475122452,
+        "Fear": 0.19144625961780548,
+        "Surprise": 0.1941865086555481
+      }
+    },
+    "21": {
+      "dominant_action": null,
+      "dominant_emotion": "Fear",
+      "bounding_box": {
+        "envelope": [
+          652.4191284179688,
+          481.18829345703125,
+          728.031005859375,
+          555.573486328125
+        ],
+        "first": {
+          "frame_index": 225,
+          "bbox": [
+            653.3685913085938,
+            481.3957214355469,
+            727.4486694335938,
+            555.5186157226562
+          ]
+        },
+        "last": {
+          "frame_index": 270,
+          "bbox": [
+            652.4191284179688,
+            481.18829345703125,
+            728.031005859375,
+            555.573486328125
+          ]
+        }
+      },
+      "action_diversity": 0,
+      "emotion_diversity": 2,
+      "action_entropy": 0.0,
+      "emotion_entropy": 0.6931471785599453,
+      "action_rate_per_minute": {},
+      "emotion_rate_per_minute": {
+        "Fear": 12.631578947368421,
+        "Neutral": 12.631578947368421
+      },
+      "action_top_ratio": 0.0,
+      "emotion_top_ratio": 0.5,
+      "action_change_rate_per_min": 0.0,
+      "emotion_change_rate_per_min": 12.631578947368421,
+      "coverage_seconds": 2.0,
+      "detection_rate": 0.21052631578947367,
+      "avg_action_confidence": 0.0,
+      "avg_emotion_confidence": 0.20602970197796822,
+      "avg_action_confidence_per_label": {},
+      "avg_emotion_confidence_per_label": {
+        "Fear": 0.20250676572322845,
+        "Neutral": 0.20955263823270798
+      }
+    },
+    "22": {
+      "dominant_action": null,
+      "dominant_emotion": "Neutral",
+      "bounding_box": {
+        "envelope": [
+          534.7006225585938,
+          373.7308349609375,
+          583.9381713867188,
+          459.780029296875
+        ],
+        "first": {
+          "frame_index": 240,
+          "bbox": [
+            534.82421875,
+            373.9368896484375,
+            583.9373168945312,
+            459.780029296875
+          ]
+        },
+        "last": {
+          "frame_index": 270,
+          "bbox": [
+            534.7006225585938,
+            373.8891296386719,
+            583.9381713867188,
+            459.4989013671875
+          ]
+        }
+      },
+      "action_diversity": 0,
+      "emotion_diversity": 1,
+      "action_entropy": 0.0,
+      "emotion_entropy": -1.000000082240371e-09,
+      "action_rate_per_minute": {},
+      "emotion_rate_per_minute": {
+        "Neutral": 18.947368421052634
+      },
+      "action_top_ratio": 0.0,
+      "emotion_top_ratio": 1.0,
+      "action_change_rate_per_min": 0.0,
+      "emotion_change_rate_per_min": 0.0,
+      "coverage_seconds": 1.5,
+      "detection_rate": 0.15789473684210525,
+      "avg_action_confidence": 0.0,
+      "avg_emotion_confidence": 0.21946218113104501,
+      "avg_action_confidence_per_label": {},
+      "avg_emotion_confidence_per_label": {
+        "Neutral": 0.21946218113104501
+      }
+    }
+  }
 }

@@ -10,7 +10,7 @@ class ModelPaths:
     # MMACTION2 config and checkpoint for action recognition.
     action_config: str
     action_checkpoint: str
-    # EmotiEffLib model name (e.g. default, EmotiEffNet-B2).
+    # EmotiEffLib model (default=enet_b0, light=mbf_va_mtl 112px, better=enet_b2_8).
     emotion_model: str
     # Optional checkpoint override for MMDet; None = use model zoo.
     det_checkpoint: Optional[str] = None
@@ -23,15 +23,15 @@ class PipelineConfig:
 
     # Video sampling
     sample_fps: int = 2
-    clip_len: int = 32
-    clip_stride: int = 16
+    clip_len: int = 8  # TSN needs 8 segments; 8 frames at 2fps = 4 sec to first action
+    clip_stride: int = 4
     crop_size: int = 224
     resize_width: int | None = None
     resize_height: int | None = None
 
     # Counting
     count_sample_seconds: int = 10
-    count_threshold: float = 0.4
+    count_threshold: float = 0.25  # Lower = more detections (distant/small students); raise if too many false positives
 
     # Tracking
     track_iou_threshold: float = 0.3
@@ -46,12 +46,14 @@ class PipelineConfig:
 
 
 def default_config() -> PipelineConfig:
-    # Use "yolo" for YOLOv8 (recommended, no mmcv), or MMDet model name.
+    # Best models in EmotiEffLib and MMAction2 (8-frame clips).
+    # Action: TSN-R50 ~73% (best for 8 frames); lightweight: TSM-MobileNetV2 ~69%.
+    # Emotion: enet_b2_8 ~63% AffectNet (best); lighter: default=enet_b0, light=mbf_va_mtl.
     model_paths = ModelPaths(
-        det_config="yolo",  # YOLOv8n, auto-downloads; no mmcv compiled ops needed
+        det_config="yolov8s",  # yolov8s=small (better detection); yolo/yolov8n=nano (faster)
         det_checkpoint=None,
         action_config="models/mmaction/tsn_imagenet-pretrained-r50_8xb32-1x1x8-100e_kinetics400-rgb.py",
         action_checkpoint="models/mmaction/tsn_imagenet-pretrained-r50_8xb32-1x1x8-100e_kinetics400-rgb_20220906-2692d16c.pth",
-        emotion_model="default",  # EmotiEffLib default model
+        emotion_model="enet_b2_8",
     )
     return PipelineConfig(model_paths=model_paths)

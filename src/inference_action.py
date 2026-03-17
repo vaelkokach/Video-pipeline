@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import shutil
 import tempfile
 from dataclasses import dataclass
 from pathlib import Path
@@ -13,6 +14,20 @@ import numpy as np
 class ActionPrediction:
     label: str
     score: float
+
+
+def _load_kinetics_labels() -> List[str]:
+    """Load Kinetics-400 label names (index = class id)."""
+    paths = [
+        Path(__file__).resolve().parent.parent / "data" / "label_map_k400.txt",
+        Path("data") / "label_map_k400.txt",
+    ]
+    for p in paths:
+        if p.exists():
+            labels = [line.strip() for line in p.read_text(encoding="utf-8").splitlines() if line.strip()]
+            if len(labels) >= 400:
+                return labels
+    return []
 
 
 def _clip_to_video(clip: np.ndarray, fps: int = 8) -> Path:
@@ -36,6 +51,7 @@ class ActionRecognizer:
         self.checkpoint = checkpoint
         self.device = device
         self._model = self._build_model()
+        self._label_map: List[str] = _load_kinetics_labels()
 
     def _build_model(self):
         try:
@@ -60,8 +76,7 @@ class ActionRecognizer:
         try:
             result = inference_recognizer(self._model, str(video_path))
         finally:
-            video_path.unlink(missing_ok=True)
-            video_path.parent.rmdir(missing_ok=True)
+            shutil.rmtree(video_path.parent, ignore_errors=True)
         predictions: List[ActionPrediction] = []
 
         scores = getattr(result, "pred_score", None)
@@ -79,7 +94,8 @@ class ActionRecognizer:
             scores = scores.cpu().numpy()
         scores = np.asarray(scores).ravel()
         for idx, score in enumerate(scores):
-            predictions.append(ActionPrediction(label=str(idx), score=float(score)))
+            name = self._label_map[idx] if idx < len(self._label_map) else str(idx)
+            predictions.append(ActionPrediction(label=name, score=float(score)))
 
         predictions.sort(key=lambda p: p.score, reverse=True)
         return predictions

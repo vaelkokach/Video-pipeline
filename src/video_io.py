@@ -15,7 +15,8 @@ class VideoSource:
 
 def open_capture(source: VideoSource) -> cv2.VideoCapture:
     if source.path:
-        return cv2.VideoCapture(source.path)
+        # Use FFmpeg backend for reliable decoding; avoids stuck frames on some codecs.
+        return cv2.VideoCapture(source.path, cv2.CAP_FFMPEG)
     if source.camera_index is not None:
         return cv2.VideoCapture(source.camera_index)
     raise ValueError("Provide either a video path or camera index.")

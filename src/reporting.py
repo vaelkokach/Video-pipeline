@@ -123,9 +123,46 @@ class ReportStats:
                 "emotion_change_count": 0,
                 "last_action": None,
                 "last_emotion": None,
+                "bbox_envelope": None,
+                "bbox_first": None,
+                "bbox_last": None,
             },
         )
         meta["frames_seen"] = int(meta["frames_seen"]) + 1
+
+    def add_student_bbox(self, student_id: int, frame_index: int, bbox: List[float]) -> None:
+        """Record bounding box for a student. Accumulates envelope (min/max extent), first and last."""
+        if len(bbox) < 4:
+            return
+        x1, y1, x2, y2 = float(bbox[0]), float(bbox[1]), float(bbox[2]), float(bbox[3])
+        meta = self.per_student_meta.setdefault(
+            str(student_id),
+            {
+                "frames_seen": 0,
+                "action_scores": {},
+                "emotion_scores": {},
+                "action_total": 0,
+                "emotion_total": 0,
+                "action_change_count": 0,
+                "emotion_change_count": 0,
+                "last_action": None,
+                "last_emotion": None,
+                "bbox_envelope": None,
+                "bbox_first": None,
+                "bbox_last": None,
+            },
+        )
+        bbox_list = [x1, y1, x2, y2]
+        if meta["bbox_first"] is None:
+            meta["bbox_first"] = {"frame_index": frame_index, "bbox": bbox_list}
+        meta["bbox_last"] = {"frame_index": frame_index, "bbox": bbox_list}
+        env = meta["bbox_envelope"]
+        if env is None:
+            meta["bbox_envelope"] = [x1, y1, x2, y2]
+        else:
+            meta["bbox_envelope"] = [
+                min(env[0], x1), min(env[1], y1), max(env[2], x2), max(env[3], y2),
+            ]
 
 
 def _sorted_counts(counts: Dict[str, int]) -> Dict[str, int]:
@@ -198,9 +235,21 @@ def write_report(stats: ReportStats, output_dir: Path) -> Path:
         coverage_seconds = frames_seen / stats.sample_fps if stats.sample_fps > 0 else 0.0
         detection_rate = frames_seen / stats.total_frames if stats.total_frames > 0 else 0.0
 
+        bbox_envelope = meta.get("bbox_envelope")
+        bbox_first = meta.get("bbox_first")
+        bbox_last = meta.get("bbox_last")
+        bounding_box: Dict[str, object] = {}
+        if bbox_envelope is not None:
+            bounding_box["envelope"] = bbox_envelope  # [x1, y1, x2, y2]
+        if bbox_first is not None:
+            bounding_box["first"] = bbox_first  # {frame_index, bbox}
+        if bbox_last is not None:
+            bounding_box["last"] = bbox_last  # {frame_index, bbox}
+
         per_student_metrics[student_id] = {
             "dominant_action": _dominant_label(actions),
             "dominant_emotion": _dominant_label(emotions),
+            "bounding_box": bounding_box if bounding_box else None,
             "action_diversity": len(actions),
             "emotion_diversity": len(emotions),
             "action_entropy": _entropy(actions),

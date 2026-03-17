@@ -13,14 +13,16 @@ class Detection:
     label: int
 
 
-def _build_yolo_counter(device: str) -> "YOLOCounter":
+def _build_yolo_counter(model_name: str, device: str) -> "YOLOCounter":
     try:
         from ultralytics import YOLO
     except ImportError as exc:
         raise RuntimeError(
             "Person detection requires ultralytics (YOLO). Run: pip install ultralytics"
         ) from exc
-    model = YOLO("yolov8n.pt")  # Nano model, auto-downloads, COCO includes person (class 0)
+    # yolov8n=nano (fastest), yolov8s=small, yolov8m=medium (better for distant/small people)
+    name = model_name if model_name.endswith(".pt") else f"{model_name}.pt"
+    model = YOLO(name)  # COCO includes person (class 0)
     return YOLOCounter(model=model, device=device)
 
 
@@ -49,7 +51,11 @@ class YOLOCounter:
         return len(self.detect_people(frame, score_thr))
 
     def detect_people(self, frame: np.ndarray, score_thr: float) -> List[List[float]]:
-        results = self.model(frame, verbose=False, device=self.device)
+        infer_conf = max(0.1, min(score_thr, 0.5))  # Request detections down to our threshold
+        results = self.model(
+            frame, verbose=False, device=self.device,
+            conf=infer_conf, imgsz=1280,  # Higher resolution for small/distant people
+        )
         out: List[List[float]] = []
         for r in results:
             if r.boxes is None:
@@ -102,16 +108,20 @@ class StudentCounter:
 
     def _build_counter(self):
         # Prefer YOLO for compatibility (no mmcv compiled ops). Use MMDet when explicitly configured.
-        use_yolo = self.det_config.lower() in ("yolo", "yolov8", "yolov8n")
+        cfg = self.det_config.lower()
+        use_yolo = cfg in ("yolo", "yolov8", "yolov8n", "yolov8s", "yolov8m")
         if use_yolo:
-            return _build_yolo_counter(self.device)
+            model = "yolov8s" if cfg == "yolov8s" or cfg == "yolov8m" else "yolov8n"
+            if cfg == "yolov8m":
+                model = "yolov8m"
+            return _build_yolo_counter(model, self.device)
         try:
             return _build_mmdet_counter(
                 self.det_config, self.det_checkpoint, self.device
             )
         except Exception:
             # Fallback to YOLO if MMDet fails (e.g. mmcv-lite)
-            return _build_yolo_counter(self.device)
+            return _build_yolo_counter("yolov8n", self.device)
 
     def count_people(self, frame: np.ndarray, score_thr: float) -> int:
         return self._counter.count_people(frame, score_thr)
