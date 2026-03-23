@@ -1,16 +1,18 @@
-# Classroom Video Analytics Pipeline
+# Thesis-Grade Classroom Attention Analytics
 
-This project analyzes recorded or live classroom video for:
-- student count (before analysis starts)
-- action recognition via MMAction2
-- emotion recognition via EmotiEffLib
-- per-student tracking and a final report with summary statistics
+This repository implements a deep learning-based, real-time classroom analytics system for student behavior and attention-loss detection.
 
-The pipeline is intentionally modular: you configure models and weights in
-`src/config.py`, and the adapters in `src/` wrap MMAction2, EmotiEffLib, and
-your chosen person detector.
+Core capabilities:
+- student detection and tracking,
+- action and emotion inference,
+- per-student attention-level estimation and alert events,
+- realtime API + dashboard streaming,
+- reproducible experiment manifests,
+- training/evaluation scaffolding for the thesis contribution.
 
-## Quick start
+The primary theoretical contribution is **Custom Attention Transition Loss (CATL)** in `src/attention/losses.py`.
+
+## Quick Start
 
 1) Create a virtual environment and install dependencies:
 
@@ -32,7 +34,7 @@ python scripts/download_models.py
 python scripts/fix_mmaction2_drn.py
 ```
 
-4) Run the pipeline:
+4) Run offline pipeline:
 
 ```powershell
 python -m src.main --video path/to/classroom.mp4 --output-dir outputs
@@ -56,12 +58,66 @@ To limit live feed duration (seconds):
 python -m src.main --camera 0 --output-dir outputs --max-seconds 30
 ```
 
+5) Optional YAML config:
+
+```powershell
+python -m src.main --video path/to/classroom.mp4 --config configs/experiment.example.yaml
+```
+
+6) Realtime API + dashboard:
+
+```powershell
+python -m src.main_realtime --camera 0 --host 127.0.0.1 --port 8000
+```
+
+Open [http://127.0.0.1:8000](http://127.0.0.1:8000).
+
+## Training and Ablation
+
+Train temporal attention model (CATL by default):
+
+```powershell
+python scripts/train_attention.py --metadata-csv path/to/daisee_metadata.csv --dataset-root path/to/videos --epochs 10
+```
+
+Run ablation harness:
+
+```powershell
+python scripts/run_ablation.py --output outputs/eval/ablation_report.json
+```
+
+## Thesis Modules
+
+- `src/attention/`:
+  - taxonomy, online estimator, event engine, CATL loss, temporal model, calibration.
+- `src/data/`:
+  - public dataset adapters and label harmonization to thesis taxonomy.
+- `src/train/`:
+  - training runner and sequence dataset scaffolding.
+- `src/eval/`:
+  - classification, temporal, calibration metrics and significance tests.
+- `src/api/` + `dashboard/`:
+  - realtime websocket streaming and instructor-facing dashboard.
+
+## Reproducibility
+
+- deterministic seed control in `src/repro.py`,
+- run manifest written to `outputs/run_manifest.json`,
+- config override through YAML (`configs/experiment.example.yaml`).
+
+## Privacy and Ethics
+
+See:
+- `docs/privacy_ethics.md`
+- `docs/theoretical_contribution.md`
+
 ## Dependencies
 
 Base dependencies are in `requirements.txt`:
 - **Person detection**: YOLOv8 (ultralytics) by default; config `det_config="yolo"`.
 - **Action recognition**: MMAction2 with TSM-MobileNetV2 (lightweight, ~2.7M params); run `scripts/download_models.py` first.
 - **Emotion recognition**: EmotiEffLib; models auto-download on first use.
+- **Realtime service**: FastAPI + WebSocket + dashboard frontend.
 
 ## Notes on models
 

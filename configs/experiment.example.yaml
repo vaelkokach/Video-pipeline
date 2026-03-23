@@ -1,0 +1,23 @@
+experiment_name: "thesis_baseline"
+seed: 42
+device: "cpu"
+save_run_manifest: true
+
+sample_fps: 2
+clip_len: 8
+clip_stride: 4
+crop_size: 224
+count_sample_seconds: 10
+count_threshold: 0.25
+track_iou_threshold: 0.3
+track_max_age: 30
+min_emotion_score: 0.0
+min_action_score: 0.0
+output_dir: "outputs"
+
+model_paths:
+  det_config: "yolov8s"
+  det_checkpoint: null
+  action_config: "models/mmaction/tsn_imagenet-pretrained-r50_8xb32-1x1x8-100e_kinetics400-rgb.py"
+  action_checkpoint: "models/mmaction/tsn_imagenet-pretrained-r50_8xb32-1x1x8-100e_kinetics400-rgb_20220906-2692d16c.pth"
+  emotion_model: "enet_b2_8"

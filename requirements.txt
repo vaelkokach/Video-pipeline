@@ -9,5 +9,9 @@ mmaction2>=1.0
 emotiefflib>=1.1
 ultralytics>=8.0
 requests>=2.28  # For robust EmotiEffLib model download (avoids 429)
+PyYAML>=6.0
+fastapi>=0.110
+uvicorn>=0.29
+pytest>=8.0
 # Person detection uses YOLOv8 (ultralytics) by default.
 # mmaction2/emotiefflib may have optional deps; action/emotion degrade gracefully if unavailable.

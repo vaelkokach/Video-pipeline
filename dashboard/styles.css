@@ -1,0 +1,89 @@
+:root {
+  --bg: #0f172a;
+  --panel: #111827;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --accent: #22c55e;
+  --warn: #f59e0b;
+  --danger: #ef4444;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #1e293b, var(--bg));
+  color: var(--text);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  max-width: 1100px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+.panel {
+  background: rgba(17, 24, 39, 0.9);
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+h1,
+h2 {
+  margin: 0 0 12px;
+}
+
+#status {
+  color: var(--muted);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid #1f2937;
+}
+
+.tag {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.engaged {
+  background: rgba(34, 197, 94, 0.2);
+  color: #86efac;
+}
+
+.neutral {
+  background: rgba(148, 163, 184, 0.2);
+  color: #cbd5e1;
+}
+
+.distracted {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fcd34d;
+}
+
+.attention_loss {
+  background: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+}
+
+ul {
+  margin: 0;
+  padding-left: 18px;
+}

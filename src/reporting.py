@@ -15,6 +15,7 @@ class ReportStats:
     sample_fps: int = 0
     action_counts: Dict[str, int] = field(default_factory=dict)
     emotion_counts: Dict[str, int] = field(default_factory=dict)
+    attention_level_counts: Dict[str, int] = field(default_factory=dict)
     per_student: Dict[str, Dict[str, Dict[str, int]]] = field(default_factory=dict)
     per_student_meta: Dict[str, Dict[str, object]] = field(default_factory=dict)
 
@@ -25,6 +26,10 @@ class ReportStats:
     def add_emotions(self, labels: List[str]) -> None:
         for label in labels:
             self.emotion_counts[label] = self.emotion_counts.get(label, 0) + 1
+
+    def add_attention_levels(self, labels: List[str]) -> None:
+        for label in labels:
+            self.attention_level_counts[label] = self.attention_level_counts.get(label, 0) + 1
 
     def add_student_action(self, student_id: int, label: str) -> None:
         student = self.per_student.setdefault(str(student_id), {"actions": {}, "emotions": {}})
@@ -109,6 +114,31 @@ class ReportStats:
         )
         emotion_scores = meta["emotion_scores"]
         emotion_scores[label] = float(emotion_scores.get(label, 0.0)) + float(score)
+
+    def add_student_attention(
+        self, student_id: int, level: str, attention_score: float, loss_probability: float
+    ) -> None:
+        meta = self.per_student_meta.setdefault(
+            str(student_id),
+            {
+                "frames_seen": 0,
+                "action_scores": {},
+                "emotion_scores": {},
+                "attention_scores": [],
+                "loss_probabilities": [],
+                "attention_levels": {},
+                "action_total": 0,
+                "emotion_total": 0,
+                "action_change_count": 0,
+                "emotion_change_count": 0,
+                "last_action": None,
+                "last_emotion": None,
+            },
+        )
+        meta.setdefault("attention_scores", []).append(float(attention_score))
+        meta.setdefault("loss_probabilities", []).append(float(loss_probability))
+        level_counts = meta.setdefault("attention_levels", {})
+        level_counts[level] = int(level_counts.get(level, 0)) + 1
 
     def mark_student_seen(self, student_id: int) -> None:
         meta = self.per_student_meta.setdefault(
@@ -231,6 +261,9 @@ def write_report(stats: ReportStats, output_dir: Path) -> Path:
         emotion_change_count = int(meta.get("emotion_change_count", 0))
         action_score_sums = meta.get("action_scores", {})
         emotion_score_sums = meta.get("emotion_scores", {})
+        attention_scores = meta.get("attention_scores", [])
+        loss_probabilities = meta.get("loss_probabilities", [])
+        attention_levels = meta.get("attention_levels", {})
 
         coverage_seconds = frames_seen / stats.sample_fps if stats.sample_fps > 0 else 0.0
         detection_rate = frames_seen / stats.total_frames if stats.total_frames > 0 else 0.0
@@ -272,6 +305,14 @@ def write_report(stats: ReportStats, output_dir: Path) -> Path:
             ),
             "avg_action_confidence_per_label": _avg_scores(action_score_sums, actions),
             "avg_emotion_confidence_per_label": _avg_scores(emotion_score_sums, emotions),
+            "avg_attention_score": float(sum(attention_scores) / len(attention_scores))
+            if attention_scores
+            else 0.0,
+            "avg_attention_loss_probability": float(sum(loss_probabilities) / len(loss_probabilities))
+            if loss_probabilities
+            else 0.0,
+            "dominant_attention_level": _dominant_label(attention_levels),
+            "attention_level_distribution": attention_levels,
         }
 
     payload = {
@@ -281,6 +322,7 @@ def write_report(stats: ReportStats, output_dir: Path) -> Path:
         "total_seconds": total_seconds,
         "action_counts": _sorted_counts(stats.action_counts),
         "emotion_counts": _sorted_counts(stats.emotion_counts),
+        "attention_level_counts": _sorted_counts(stats.attention_level_counts),
         "per_student": stats.per_student,
         "per_student_metrics": per_student_metrics,
     }
