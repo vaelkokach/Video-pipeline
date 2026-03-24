@@ -1,4 +1,4 @@
-# Thesis-Grade Classroom Attention Analytics
+# Attention Analytics
 
 This repository implements a deep learning-based, real-time classroom analytics system for student behavior and attention-loss detection.
 
